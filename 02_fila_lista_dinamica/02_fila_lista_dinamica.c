@@ -37,8 +37,8 @@ NoF *criaNoF(int dado) {
     return novoNo;
 }
 
-// Função para adicionar (enqueue) um elemento à fila
-void enqueue(Fila *fila, int dado) {
+// Função para adicionar (incluirFila) um elemento à fila
+void incluirFila(Fila *fila, int dado) {
     // Cria um novo nó com o dado a ser adicionado à fila
     NoF *novoNo = criaNoF(dado);
 
@@ -58,8 +58,8 @@ void enqueue(Fila *fila, int dado) {
     printf("Adicionado: %d\n", dado);
 }
 
-// Função para remover (dequeue) um elemento da fila
-int dequeue(Fila *fila) {
+// Função para remover (removerFila) um elemento da fila
+int removerFila(Fila *fila) {
     // Verifica se a fila está vazia
     if (fila->frente == NULL) {
         printf("Fila vazia.\n"); // Exibe mensagem de erro
@@ -87,8 +87,8 @@ int dequeue(Fila *fila) {
     return dado;
 }
 
-// Função para ver o elemento na frente da fila sem removê-lo (peek)
-int peek(Fila *fila) {
+// Função para ver o elemento na frente da fila sem removê-lo (inicioFila)
+int inicioFila(Fila *fila) {
     // Verifica se a fila está vazia
     if (fila->frente == NULL) {
         printf("Fila vazia.\n"); // Exibe mensagem de erro
@@ -195,8 +195,8 @@ int removerDoMeioFila(Fila *fila, int posicao) {
 
     // Caso especial: remover do início da fila (posição 0)
     if (posicao == 0) {
-        // Retorna o valor removido com a função dequeue
-        return dequeue(fila);
+        // Retorna o valor removido com a função removerFila
+        return removerFila(fila);
     }
 
     // Variável temporária para percorrer a fila até a posição anterior à desejada
@@ -264,12 +264,12 @@ int fila() {
                 // Adiciona um elemento à fila
                 printf("Digite o valor a ser adicionado: ");
                 scanf("%d", &valor);
-                enqueue(fila, valor);
+                incluirFila(fila, valor);
                 break;
 
             case 2:
                 // Remove um elemento da fila
-                valor = dequeue(fila);
+                valor = removerFila(fila);
                 if (valor != -1) {
                     printf("Elemento removido: %d\n", valor);
                 }
@@ -277,7 +277,7 @@ int fila() {
 
             case 3:
                 // Mostra o elemento na frente da fila
-                valor = peek(fila);
+                valor = inicioFila(fila);
                 if (valor != -1) {
                     printf("Elemento na frente da fila: %d\n", valor);
                 }
@@ -320,7 +320,7 @@ int fila() {
             case 0:
                 // Sai do menu e libera a memória da fila
                 while (!filaVazia(fila)) {
-                    dequeue(fila);
+                    removerFila(fila);
                 }
                 free(fila);
                 printf("Saindo...\n");

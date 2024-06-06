@@ -19,9 +19,9 @@ typedef struct {
 // Funções para manipulação da fila
 Fila* criaFila();
 NoF* criaNoF(int dado);
-void enqueue(Fila* fila, int dado);
-int dequeue(Fila* fila);
-int peek(Fila* fila);
+void incluirFila(Fila* fila, int dado);
+int removerFila(Fila* fila);
+int inicioFila(Fila* fila);
 int filaVazia(Fila* fila);
 void exibirFila(Fila* fila);
 void inserirNoMeioFila(Fila* fila, int dado, int posicao);

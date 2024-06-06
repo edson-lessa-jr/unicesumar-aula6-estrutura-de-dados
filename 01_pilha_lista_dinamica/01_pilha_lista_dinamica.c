@@ -19,8 +19,8 @@ NoP* criaNo(int dado) {
     return novoNo;
 }
 
-// Função para empilhar (push) um elemento
-void push(NoP** topo, int dado) {
+// Função para empilhar (empilhar) um elemento
+void empilhar(NoP** topo, int dado) {
     // Cria um novo nó com o dado a ser empilhado
     NoP* novoNo = criaNo(dado);
 
@@ -34,8 +34,8 @@ void push(NoP** topo, int dado) {
     printf("Empilhado: %d\n", dado);
 }
 
-// Função para desempilhar (pop) um elemento
-int pop(NoP** topo) {
+// Função para desempilhar (desempilhar) um elemento
+int desempilhar(NoP** topo) {
     // Verifica se a pilha está vazia
     if (*topo == NULL) {
         printf("Pilha vazia.\n"); // Exibe mensagem de erro
@@ -58,8 +58,8 @@ int pop(NoP** topo) {
     return dado;
 }
 
-// Função para ver o elemento no topo da pilha sem removê-lo (top)
-int top(NoP* topo) {
+// Função para ver o elemento no topo da pilha sem removê-lo (topoPilha)
+int topoPilha(NoP* topo) {
     // Verifica se a pilha está vazia
     if (topo == NULL) {
         printf("Pilha vazia.\n"); // Exibe mensagem de erro
@@ -71,7 +71,7 @@ int top(NoP* topo) {
 }
 
 // Função para verificar se a pilha está vazia
-int isEmpty(NoP* topo) {
+int pilhaVazia(NoP* topo) {
     // Retorna verdadeiro se a pilha estiver vazia (topo nulo)
     return topo == NULL;
 }
@@ -95,7 +95,7 @@ void exibirPilha(NoP* topo) {
 }
 
 // Função para inserir um elemento em uma posição específica da pilha
-void inserirNoMeio(NoP** topo, int dado, int posicao) {
+void inserirNoMeioPilha(NoP** topo, int dado, int posicao) {
     // Verifica se a posição é válida (maior ou igual a zero)
     if (posicao < 0) {
         printf("Posicao invalida.\n"); // Exibe mensagem de erro
@@ -104,7 +104,7 @@ void inserirNoMeio(NoP** topo, int dado, int posicao) {
 
     // Caso especial: inserir no topo da pilha (posição 0)
     if (posicao == 0) {
-        push(topo, dado); // Utiliza a função push para empilhar o elemento
+        empilhar(topo, dado); // Utiliza a função empilhar para empilhar o elemento
         return;
     }
 
@@ -155,22 +155,22 @@ int pilha() {
             case 1:
                 printf("Digite o valor a ser empilhado: ");
                 scanf("%d", &valor);
-                push(&topo, valor);
+                empilhar(&topo, valor);
                 break;
             case 2:
-                valor = pop(&topo);
+                valor = desempilhar(&topo);
                 if (valor != -1) {
                     printf("Elemento desempilhado: %d\n", valor);
                 }
                 break;
             case 3:
-                valor = top(topo);
+                valor = topoPilha(topo);
                 if (valor != -1) {
                     printf("Elemento no topo: %d\n", valor);
                 }
                 break;
             case 4:
-                if (isEmpty(topo)) {
+                if (pilhaVazia(topo)) {
                     printf("A pilha esta vazia.\n");
                 } else {
                     printf("A pilha nao esta vazia.\n");
@@ -185,12 +185,12 @@ int pilha() {
                 scanf("%d", &valor);
                 printf("Digite a posicao em que deseja inserir: ");
                 scanf("%d", &posicao);
-                inserirNoMeio(&topo, valor, posicao);
+                inserirNoMeioPilha(&topo, valor, posicao);
                 break;
             case 0:
                 // Desempilha todos os elementos restantes antes de sair
-                while (!isEmpty(topo)) {
-                    pop(&topo);
+                while (!pilhaVazia(topo)) {
+                    desempilhar(&topo);
                 }
                 printf("Saindo...\n");
                 break;

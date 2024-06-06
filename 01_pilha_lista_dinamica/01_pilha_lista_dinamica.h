@@ -12,12 +12,12 @@ typedef struct NoP {
 
 // Funções para manipulação da pilha
 NoP* criaNo(int dado);
-void push(NoP** topo, int dado);
-int pop(NoP** topo);
-int top(NoP* topo);
-int isEmpty(NoP* topo);
+void empilhar(NoP** topo, int dado);
+int desempilhar(NoP** topo);
+int topoPilha(NoP* topo);
+int pilhaVazia(NoP* topo);
 void exibirPilha(NoP* topo);
-void inserirNoMeio(NoP** topo, int dado, int posicao);
+void inserirNoMeioPilha(NoP** topo, int dado, int posicao);
 int pilha();
 
 #endif // PILHA_LISTA_DINAMICA_H
