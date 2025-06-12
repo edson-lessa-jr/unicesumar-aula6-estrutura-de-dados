@@ -37,7 +37,7 @@ NoF *criaNoF(int dado) {
     return novoNo;
 }
 
-// Função para adicionar (incluirFila) um elemento à fila
+// Função para adicionar (enqueue) um elemento à fila
 void incluirFila(Fila *fila, int dado) {
     // Cria um novo nó com o dado a ser adicionado à fila
     NoF *novoNo = criaNoF(dado);
@@ -58,7 +58,7 @@ void incluirFila(Fila *fila, int dado) {
     printf("Adicionado: %d\n", dado);
 }
 
-// Função para remover (removerFila) um elemento da fila
+// Função para remover (dequeue) um elemento da fila
 int removerFila(Fila *fila) {
     // Verifica se a fila está vazia
     if (fila->frente == NULL) {

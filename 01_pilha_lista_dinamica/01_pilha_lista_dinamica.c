@@ -19,7 +19,7 @@ NoP* criaNo(int dado) {
     return novoNo;
 }
 
-// Função para empilhar (empilhar) um elemento
+// Função para empilhar (push) um elemento
 void empilhar(NoP** topo, int dado) {
     // Cria um novo nó com o dado a ser empilhado
     NoP* novoNo = criaNo(dado);
@@ -34,7 +34,7 @@ void empilhar(NoP** topo, int dado) {
     printf("Empilhado: %d\n", dado);
 }
 
-// Função para desempilhar (desempilhar) um elemento
+// Função para desempilhar (pop) um elemento
 int desempilhar(NoP** topo) {
     // Verifica se a pilha está vazia
     if (*topo == NULL) {
